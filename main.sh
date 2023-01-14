@@ -52,7 +52,7 @@ ConditionPathExists=/usr/bin/k3s_installer.sh
 ConditionPathExists=!/usr/local/bin/k3s
 [Service]
 Type=forking
-TimeoutStartSec=120
+TimeoutStartSec=3600
 Environment="K3S_TOKEN=$MASTER_NODE_K3S_TOKEN"
 Environment="K3S_KUBECONFIG_MODE=644"
 Environment="INSTALL_K3S_EXEC=$INSTALL_K3S_EXEC"
