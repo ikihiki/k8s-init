@@ -4,7 +4,7 @@ source $NODE_NAME.sh
 
  
 ## Set hostname
-echo $NODE_NAME > /etc/hostname
+echo $NODE_NAME >| /etc/hostname
 
 ## Setup mDNS
 cat <<- EOF > /etc/NetworkManager/conf.d/mdns.conf
