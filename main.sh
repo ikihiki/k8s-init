@@ -2,7 +2,6 @@
 source common.sh
 source $NODE_NAME.sh
 
-zypper --non-interactive install ssh-import-id patterns-microos-cockpit cockpit bash-completion avahi nss-mdns 
  
 ## Set hostname
 echo $NODE_NAME > /etc/hostname
@@ -63,6 +62,8 @@ KillMode=process
 [Install]
 WantedBy=multi-user.target
 EOF
+
+zypper --non-interactive install ssh-import-id patterns-microos-cockpit cockpit bash-completion avahi nss-mdns 
 
 ## Enable services
 systemctl enable cockpit.socket
