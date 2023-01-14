@@ -63,10 +63,10 @@ KillMode=process
 WantedBy=multi-user.target
 EOF
 
-zypper --non-interactive install ssh-import-id patterns-microos-cockpit cockpit bash-completion avahi nss-mdns 
+zypper --non-interactive install ssh-import-id avahi nss-mdns #  patterns-microos-cockpit cockpit bash-completion
 
 ## Enable services
-systemctl enable cockpit.socket
+#systemctl enable cockpit.socket
 systemctl enable ssh-import-id.service
 systemctl enable sshd
 systemctl enable install-rancher-k3s-master.service
