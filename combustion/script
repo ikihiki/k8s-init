@@ -5,6 +5,7 @@ exec > >(exec tee -a /dev/tty0) 2>&1
 NODE_NAME=''
 MASTER_NODE_K3S_TOKEN=''  ## You can find this on the master/CP node: /var/lib/rancher/k3s/server/node-token
 IMPORT_SSH_KEY=''
+MASTER_NODE_ADDR='master1.local'  ## The ip or FQDN of the first node
 
 echo $NODE_NAME initialize
 
