@@ -1,0 +1,15 @@
+#!/bin/bash
+# combustion: network
+set -Ceu
+exec > >(exec tee -a /dev/tty0) 2>&1
+NODE_NAME=''
+MASTER_NODE_K3S_TOKEN=''  ## You can find this on the master/CP node: /var/lib/rancher/k3s/server/node-token
+IMPORT_SSH_KEY=''
+
+echo $NODE_NAME initialize
+
+zypper ref
+zypper --non-interactive install git
+git clone https://github.com/ikihiki/k8s-init.git
+cd k8s-init
+source main.sh
