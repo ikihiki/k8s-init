@@ -2,7 +2,8 @@
 source common.sh
 source $NODE_NAME.sh
 
- 
+zypper --non-interactive install ssh-import-id avahi nss-mdns patterns-microos-cockpit cockpit bash-completion
+
 ## Set hostname
 echo $NODE_NAME >| /etc/hostname
 
@@ -52,7 +53,6 @@ ConditionPathExists=!/usr/local/bin/k3s
 [Service]
 Type=forking
 TimeoutStartSec=120
-Environment="K3S_URL=https://$MASTER_NODE_ADDR:6443"
 Environment="K3S_TOKEN=$MASTER_NODE_K3S_TOKEN"
 Environment="K3S_KUBECONFIG_MODE=644"
 Environment="INSTALL_K3S_EXEC=$INSTALL_K3S_EXEC"
@@ -63,10 +63,9 @@ KillMode=process
 WantedBy=multi-user.target
 EOF
 
-zypper --non-interactive install ssh-import-id avahi nss-mdns #  patterns-microos-cockpit cockpit bash-completion
 
 ## Enable services
-#systemctl enable cockpit.socket
+systemctl enable cockpit.socket
 systemctl enable ssh-import-id.service
 systemctl enable sshd
 systemctl enable install-rancher-k3s-master.service
